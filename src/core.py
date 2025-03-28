@@ -73,26 +73,27 @@ def simulate_typing(text, min_interval, max_interval):
             elif is_ascii(char):
                 print(f"输入ASCII: {char}")
                 pyautogui.keyDown("shift")
-                time.sleep(0.1)
+                time.sleep(0.08)
                 pyautogui.typewrite(char)
-                time.sleep(0.1)
+                time.sleep(0.08)
                 pyautogui.keyUp("shift")
-                time.sleep(0.1)
+                time.sleep(0.08)
                 pyautogui.keyDown("shift")
-                time.sleep(0.1)
+                time.sleep(0.08)
                 pyautogui.keyUp("shift")
-                time.sleep(0.1)
+                time.sleep(0.08)
                 time.sleep(random.uniform(min_interval, max_interval))
             elif "\u4e00" <= char <= "\u9fff":
-                # 中文处理增强版
+                # 中文处理
                 print(f"输入中文: {char}")
-                time.sleep(0.1)
+                time.sleep(0.08)
                 code = get_wubi_code(char)
                 pyautogui.write(code, interval=0.08)
-                time.sleep(0.3)
+                time.sleep(0.2)
                 pyautogui.keyDown("space")
-                time.sleep(0.08)
+                time.sleep(0.05)
                 pyautogui.keyUp("space")
+                # pyautogui.press('1')  # 通常第一个候选词
                 time.sleep(random.uniform(0.2, 0.3))
                 # # 输入拼音
                 # pinyin = lazy_pinyin(char)
@@ -102,7 +103,7 @@ def simulate_typing(text, min_interval, max_interval):
                 # time.sleep(0.2)  # 等待输入法响应
 
                 # # 选择候选词
-                # pyautogui.press('1')  # 通常第一个候选词
+                
                 # time.sleep(random.uniform(0.2, 0.3))
 
             else:
@@ -110,7 +111,7 @@ def simulate_typing(text, min_interval, max_interval):
                 print(f"输入其它符号: {char}")
                 pyperclip.copy(char)
                 pyautogui.hotkey("ctrl", "v")
-                time.sleep(0.1)
+                time.sleep(0.08)
 
     except Exception as e:
         print(f"输入中断，错误信息: {str(e)}")
