@@ -10,3 +10,17 @@ pack_env\Scripts\activate
 # 依赖
 pip install -r requirements.txt
 ```
+
+## 生成依赖文件
+
+```powershell
+pip freeze > requirements.txt
+```
+
+## 说明
+
+需要配合五笔输入法（中文状态）才能使用
+
+## 待优化
+
+字符编码选多的
